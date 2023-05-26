@@ -21,7 +21,7 @@ int main(void) {
 	createLinkedList();
 	while (1) {
 		system("cls");
-		printf("Linked List in C [version 1.1.0]\n2023 Crisper. No rights reserved.\n\n");
+		printf("Linked List in C [version 1.1.1]\n2023 Crisper. No rights reserved.\n\n");
 		printf("1 - Add node at the start\n");
 		printf("2 - Add node at the end\n");
 		printf("3 - Remove node at the start\n");
@@ -37,6 +37,7 @@ int main(void) {
 				while (!scanf("%d", &value)) {
 					char c;
 					while (c = getc(stdin) != '\n');
+					system("cls");
 					printf("ERROR: Invalid value.\n\n");
 					system("pause");
 					system("cls");
@@ -50,6 +51,7 @@ int main(void) {
 				while (!scanf("%d", &value)) {
 					char c;
 					while (c = getc(stdin) != '\n');
+					system("cls");
 					printf("ERROR: Invalid value.\n\n");
 					system("pause");
 					system("cls");
@@ -127,19 +129,16 @@ int deleteAllNodes(void) {
 }
 
 void printLinkedList(void) {
-	if (head == NULL) {
-		printf("[]\n\n");
-		return;
-	}
 	Node* auxNodePointer = head;
 	printf("[");
 	while (auxNodePointer != NULL) {
 		if (auxNodePointer -> link != NULL)
 			printf("%d, ", auxNodePointer -> data);
 		else
-			printf("%d]\n\n", auxNodePointer -> data);
+			printf("%d", auxNodePointer -> data);
 		auxNodePointer = auxNodePointer -> link;
 	}
+	printf("]\n\n");
 }
 
 int removeNodeEnd(void) {
