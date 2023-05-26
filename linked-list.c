@@ -21,7 +21,7 @@ int main(void) {
 	createLinkedList();
 	while (1) {
 		system("cls");
-		printf("Linked List in C [version 1.0.0]\n2023 Crisper. No rights reserved.\n\n");
+		printf("Linked List in C [version 1.1.0]\n2023 Crisper. No rights reserved.\n\n");
 		printf("1 - Add node at the start\n");
 		printf("2 - Add node at the end\n");
 		printf("3 - Remove node at the start\n");
@@ -34,13 +34,27 @@ int main(void) {
 		switch (option) {
 			case 1:
 				printf("Value to be added at the start: ");
-				scanf("%d", &value);
+				while (!scanf("%d", &value)) {
+					char c;
+					while (c = getc(stdin) != '\n');
+					printf("ERROR: Invalid value.\n\n");
+					system("pause");
+					system("cls");
+					printf("Value to be added at the start: ");
+				}
 				addNodeStart(value);
 				printf("New node added sucessfully.\n\n");
 				break;
 			case 2:
 				printf("Value to be added at the end: ");
-				scanf("%d", &value);
+				while (!scanf("%d", &value)) {
+					char c;
+					while (c = getc(stdin) != '\n');
+					printf("ERROR: Invalid value.\n\n");
+					system("pause");
+					system("cls");
+					printf("Value to be added at the end: ");
+				}
 				addNodeEnd(value);
 				printf("New node added sucessfully.\n\n");
 				break;
