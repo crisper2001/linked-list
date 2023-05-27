@@ -21,8 +21,12 @@ int main(void) {
 	createLinkedList();
 	START:
 	while (1) {
-		system("cls");
-		printf("Linked List in C [version 1.1.2]\n2023 Crisper. No rights reserved.\n\n");
+		#if _WIN32
+			system("cls");
+		#else
+			system("clear");
+		#endif
+		printf("Linked List in C [version 1.1.3]\n2023 Crisper. No rights reserved.\n\n");
 		printf("1 - Add node at the start\n");
 		printf("2 - Add node at the end\n");
 		printf("3 - Remove node at the start\n");
@@ -32,23 +36,42 @@ int main(void) {
 		printf("7 - Exit\n\n> ");
 		while (scanf("%d", &option) == 0) {
 			char c;
-			while (c = getc(stdin) != '\n');
-			system("cls");
-			printf("ERROR: Invalid option.\n\n");
-			system("pause");
+			while ((c = getchar()) != '\n');
+			#if _WIN32
+				system("cls");
+				printf("ERROR: Invalid option.\n\n");
+				system("pause");
+			#else
+				system("clear");
+				printf("ERROR: Invalid option.\n\n");
+				printf("Press enter to continue...");
+				getchar();
+			#endif
 			goto START;
 		}
-		system("cls");
+		#if _WIN32
+			system("cls");
+		#else
+			system("clear");
+		#endif
 		switch (option) {
 			case 1:
 				printf("Value to be added at the start: ");
 				while (!scanf("%d", &value)) {
 					char c;
-					while (c = getc(stdin) != '\n');
-					system("cls");
-					printf("ERROR: Invalid value.\n\n");
-					system("pause");
-					system("cls");
+					while ((c = getchar()) != '\n');
+					#if _WIN32
+						system("cls");
+						printf("ERROR: Invalid option.\n\n");
+						system("pause");
+						system("cls");
+					#else
+						system("clear");
+						printf("ERROR: Invalid option.\n\n");
+						printf("Press enter to continue...");
+						getchar();
+						system("clear");
+					#endif
 					printf("Value to be added at the start: ");
 				}
 				addNodeStart(value);
@@ -58,11 +81,19 @@ int main(void) {
 				printf("Value to be added at the end: ");
 				while (!scanf("%d", &value)) {
 					char c;
-					while (c = getc(stdin) != '\n');
-					system("cls");
-					printf("ERROR: Invalid value.\n\n");
-					system("pause");
-					system("cls");
+					while ((c = getchar()) != '\n');
+					#if _WIN32
+						system("cls");
+						printf("ERROR: Invalid option.\n\n");
+						system("pause");
+						system("cls");
+					#else
+						system("clear");
+						printf("ERROR: Invalid option.\n\n");
+						printf("Press enter to continue...");
+						getchar();
+						system("clear");
+					#endif
 					printf("Value to be added at the end: ");
 				}
 				addNodeEnd(value);
@@ -93,11 +124,18 @@ int main(void) {
 				return 0;
 			default:
 				printf("ERROR: Invalid option.\n\n");
-				char character;
-				while (character = getchar() != '\n');
+				char c;
+				while ((c = getchar()) != '\n');
 				break;
 		}
-		system("pause");
+		char c;
+		while ((c = getchar()) != '\n');
+		#if _WIN32
+			system("pause");
+		#else
+			printf("Press enter to continue...");
+			getchar();
+		#endif
 	}
 }
 
