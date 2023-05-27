@@ -19,9 +19,10 @@ int removeNodeStart(void);
 int main(void) {
 	int option, value;
 	createLinkedList();
+	START:
 	while (1) {
 		system("cls");
-		printf("Linked List in C [version 1.1.1]\n2023 Crisper. No rights reserved.\n\n");
+		printf("Linked List in C [version 1.1.2]\n2023 Crisper. No rights reserved.\n\n");
 		printf("1 - Add node at the start\n");
 		printf("2 - Add node at the end\n");
 		printf("3 - Remove node at the start\n");
@@ -29,7 +30,14 @@ int main(void) {
 		printf("5 - Delete all nodes\n");
 		printf("6 - Print\n");
 		printf("7 - Exit\n\n> ");
-		scanf("%d", &option);
+		while (scanf("%d", &option) == 0) {
+			char c;
+			while (c = getc(stdin) != '\n');
+			system("cls");
+			printf("ERROR: Invalid option.\n\n");
+			system("pause");
+			goto START;
+		}
 		system("cls");
 		switch (option) {
 			case 1:
