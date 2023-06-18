@@ -124,8 +124,6 @@ int main(void) {
 				return 0;
 			default:
 				printf("ERROR: Invalid option.\n\n");
-				char c;
-				while ((c = getchar()) != '\n');
 				break;
 		}
 		char c;
